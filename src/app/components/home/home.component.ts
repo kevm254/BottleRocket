@@ -7,19 +7,43 @@ import { HomeService } from '../../services/cmp_services/home.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  /* ====================================================================== */
+  // Properties
+  /* ====================================================================== */
+  public restaurantData: any;
+  public currentlySelectedRestaurantData: any;
 
+
+
+  /* ====================================================================== */
+  // Constructor & Life-Cycle Methods
+  /* ====================================================================== */
   // Constructor /////////////////////////////////////
-  constructor(
-    private homeService: HomeService,
-  ) {
+  constructor(private homeService: HomeService,) {
   }
 
-  // Life-Cycle Methods /////////////////////////////////////
+
+  // General Life-Cycle Methods /////////////////////////////////////
   ngOnInit(): void {
-    this.homeService.alertMe();
+    this.fetchRestaurantData();
   }
 
-  // Common Methods /////////////////////////////////////
+
+  // ngOnInit Methods /////////////////////////////////////
+  fetchRestaurantData(): void {
+    this.homeService.fetchRestaurantData()
+      .subscribe((data: any) => {
+        this.restaurantData = data.restaurants ? data.restaurants : data;
+      });
+  }
 
 
+
+  /* ====================================================================== */
+  //  Action Methods
+  /* ====================================================================== */
+  // Click Methods /////////////////////////////////////
+  selectRestaurantOnClick(restaurantData: any): void {
+    alert(' Restaurant was selected!' + JSON.stringify(restaurantData));
+  }
 }

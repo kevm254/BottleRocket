@@ -2,7 +2,33 @@
 <!-- Start Header -->
 <!-- ************************************************************ -->
 <section id="home_section">
-  <p>This is the home component</p>
+
+  <p>We are on the home component!</p>
+  <button class="btn btn-primary" (click)="fetchRestaurantData()">Get Data!</button>
+
+
+  <div *ngIf="!restaurantData; else displayData">
+    Data Loading...
+  </div>
+
+  <div *ngIf="restaurantData" #displayData>
+
+    <div class="row">
+      <div *ngFor="let restaurant of restaurantData">
+        <div class="col-md-6">
+          <!--<pre>{{ restaurant | json }}</pre>-->
+          <button (click)="selectRestaurantOnClick(restaurant)">Select This</button>
+          <h2>{{ restaurant.name }}</h2>
+          <h3>{{ restaurant.category }}</h3>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <home-detail-cmp [restaurantData]="currentlySelectedRestaurantData"></home-detail-cmp>
+
+
 </section>
 
 <!-- ************************************************************ -->
