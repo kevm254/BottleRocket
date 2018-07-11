@@ -7,9 +7,11 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 // Models/Misc.
 import { AppRoutes } from './app.routes';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -17,9 +19,11 @@ import { AppRoutes } from './app.routes';
     AppComponent,
     HomeComponent,
     HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     RouterModule.forRoot(AppRoutes)
   ],
   providers: [],
