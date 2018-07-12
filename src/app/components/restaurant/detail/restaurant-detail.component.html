@@ -5,8 +5,7 @@
   <div id="map" style="height: 400px; width: auto"></div>
 
   <div
-    *ngIf="restaurantDataLoaded"
-    class="col-lg-12">
+    *ngIf="restaurantDataLoaded">
     <div
       class="header row"
       style="background-color: green">
@@ -29,8 +28,8 @@
 
     </div>
 
-    <div>
-      <button (click)="closePanel()">Close</button>
+    <div class="ext_close_btn">
+      <a (click)="closePanel()"><img class="int_close_btn" src="assets/images/ic_webBack@2x.png"></a>
     </div>
   </div>
 

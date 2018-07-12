@@ -37,6 +37,7 @@
 <!-- ------------------------------------------------------------ -->
 
 <restaurant-detail-cmp
-  [restaurantData]="currentlySelectedRestaurant">
+  [restaurantData]="currentlySelectedRestaurant"
+  (clearParentDataEmitter)="clearSelectedRestaurant()">
 </restaurant-detail-cmp>
 

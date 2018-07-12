@@ -1,6 +1,8 @@
 .header {
   color: white;
   font-size: 16px;
+  background-color: green;
+  padding-left: 20px;
 }
 
 .panel-opened {
@@ -11,4 +13,26 @@
 .panel-closed {
   width: 0 !important;
   transition: width .25s ease-in;
+}
+
+.ext_close_btn {
+  margin-top: 19px;
+  height: 100px;
+  width: 100px;
+  background-color: green;
+  border-radius: 400px;
+  text-align: center;
+
+}
+
+.ext_close_btn:hover {
+
+  box-shadow: 0 0 5px orange;
+}
+
+.int_close_btn {
+  padding-top: 19px;
+  height: 75px;
+  width: 75px;
+  border-radius: 400px;
 }

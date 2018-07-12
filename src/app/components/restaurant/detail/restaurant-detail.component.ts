@@ -159,6 +159,8 @@ export class RestaurantDetailComponent implements OnInit, OnDestroy {
   /* ====================================================================== */
   closePanel() {
     this.isOpen = false;
+
+    this.clearParentData();
   }
 
   openPanel() {
@@ -168,7 +170,7 @@ export class RestaurantDetailComponent implements OnInit, OnDestroy {
   }
 
   clearData() {
-
+    this.clearParentData();
   }
 
   clearLocalData() {

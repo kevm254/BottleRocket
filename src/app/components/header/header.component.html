@@ -7,28 +7,36 @@
   <!-- Navbar -->
   <!-- -------------------------------------------------------- -->
   <nav id="main_nav">
+    <!-- BEGIN Menu Bars in Mobile -->
     <div class="menu-bar">
       <div class="menu-bar-block"></div>
       <div class="menu-bar-block"></div>
       <div class="menu-bar-block"></div>
     </div>
+    <!-- END Menu Bars in Mobile -->
 
-    <div class="first-nav-item-container-lg" style="display: flex; align-items: center; font-size: 1.8rem; color: white; padding-left: 20px;">
+
+    <!-- BEGIN Nav Items -->
+    <!-- Lunch -->
+    <div class="nav-item-container first-nav-item-container-lg">
       <div class="nav-item nav-item-lg-width"><a [routerLink]="['/restaurants']" routerLinkActive="active">Lunch</a></div>
     </div>
 
-    <div class="nav-item-container-lg"
-      style="display: flex; align-items: center; font-size: 1.8rem; color: white; padding-left: 20px;">
+    <!-- Internet -->
+    <div class="nav-item-container nav-item-container-lg">
       <div class="nav-item nav-item-lg-width"><a [routerLink]="['/home']" routerLinkActive="active">Internet</a></div>
     </div>
 
-    <div style="flex: 1; display: flex; align-items: center; font-size: 1.8rem; color: white; padding-left: 20px;">
+    <!-- Contact -->
+    <div class="nav-item-container last-nav-item-container" style="flex: 1">
       <div class="nav-item contact-alignment">Contact</div>
     </div>
 
-    <div style="display: flex; align-items: center; font-size: 1.8rem; background-color: white; padding-right:20px; padding-left:10px">
-      <div><img style="max-height: 40px; width: auto" src="assets/images/Bottle_Rocket_Logo.jpg"></div>
+    <!-- Brand Logo -->
+    <div class="nav-item-container brand-container">
+      <div><a href="https://www.bottlerocketstudios.com/" target="_blank"><img class="brand" src="assets/images/Bottle_Rocket_Logo.jpg"></a></div>
     </div>
+    <!-- END Nav Items -->
   </nav>
 
   <!-- -------------------------------------------------------- -->
@@ -36,9 +44,7 @@
   <!-- -------------------------------------------------------- -->
 
 
-
 </header>
-
 <!-- ************************************************************ -->
 <!-- END Header -->
 <!-- ************************************************************ -->

@@ -75,6 +75,9 @@ export class RestaurantComponent implements OnInit {
     return this.utilityService.sanitizeImage(imageUrl);
   }
 
+  clearSelectedRestaurant() {
+    this.currentlySelectedRestaurant = null;
+  }
 
 
 

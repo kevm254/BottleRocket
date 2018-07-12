@@ -14,6 +14,10 @@
 
 }
 
+.active {
+  color: orange;
+}
+
 
 /* Icons */
 .nav-icon {
