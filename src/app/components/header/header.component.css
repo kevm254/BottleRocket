@@ -39,6 +39,10 @@
 
 
 @media only screen and (max-width: 700px) {
+  .nav-item {
+    font-size: 1.8rem;
+  }
+
   .nav-item-lg-width {
     display: none;
   }
@@ -52,6 +56,14 @@
   #main_nav {
     transition: background-color .5s ease-in;
     background-color: red;
+  }
+
+  .first-nav-item-container-lg {
+    margin-left: 40px;
+  }
+
+  .nav-item-container-lg {
+    margin-left: 20px;
   }
 
   .menu-bar {
