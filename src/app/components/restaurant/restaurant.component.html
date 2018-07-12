@@ -15,14 +15,15 @@
 <div *ngIf="restaurantData" #displayData>
 
 
-  <div style="display: flex; flex-wrap: wrap;" class="test">
+  <div style="display: flex; flex-wrap: wrap;" class="main_container">
+
     <div
       *ngFor="let restaurant of restaurantData"
       [style.background-image]="sanitizeImage(restaurant.backgroundImageURL)"
       (click)="selectRestaurantOnClick(restaurant);"
       style="display: flex; background-size: cover; background-repeat: no-repeat;"
       class="hover">
-      <div
+        <div
         class="hover"
         style="align-self: flex-end; border: 1px solid green; margin-left: 10px; margin-bottom: 10px; ">
         <h2 style="font-size: 25px; color: white;">{{ restaurant.name }}</h2>
@@ -37,11 +38,3 @@
 <!-- END Restaurant List
 <!-- ------------------------------------------------------------ -->
 
-
-<!-- ------------------------------------------------------------ -->
-<!-- START Restaurant Detail
-<!-- ------------------------------------------------------------ -->
-<restaurant-detail-cmp [restaurantData]="currentlySelectedRestaurantData"></restaurant-detail-cmp>
-<!-- ------------------------------------------------------------ -->
-<!-- END Restaurant Detail
-<!-- ------------------------------------------------------------ -->

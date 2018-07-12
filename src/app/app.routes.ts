@@ -18,10 +18,9 @@ export const AppRoutes: Routes = [
     component: RestaurantComponent
   },
   {
-    path: 'display-detail',
+    path: 'restaurants/detail',
     component: RestaurantDetailComponent
   },
-
   // Default Route
   {
     path: '',

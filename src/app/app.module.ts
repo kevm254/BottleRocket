@@ -15,9 +15,14 @@ import { FooterComponent } from './components/footer/footer.component';
 
 // Services
 import { HomeService } from './services/cmp_services/home.service';
+import { GoogleMapsService } from './services/common/google.service';
+import { RestaurantBridgeService } from './services/cmp_services/restaurant_bridge.service';
+import { UtilityService } from './services/common/utility.service';
 
 // Models/Misc.
 import { AppRoutes } from './app.routes';
+
+
 
 
 @NgModule({
@@ -26,7 +31,6 @@ import { AppRoutes } from './app.routes';
     HomeComponent,
     RestaurantDetailComponent,
     RestaurantComponent,
-
     HeaderComponent,
     FooterComponent
   ],
@@ -39,6 +43,9 @@ import { AppRoutes } from './app.routes';
   ],
 
   providers: [
+    GoogleMapsService,
+    RestaurantBridgeService,
+    UtilityService,
     HomeService
   ],
 

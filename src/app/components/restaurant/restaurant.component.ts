@@ -4,6 +4,9 @@ import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
 
 // Services
 import { HomeService } from '../../services/cmp_services/home.service';
+import { RestaurantBridgeService } from '../../services/cmp_services/restaurant_bridge.service';
+import { Router } from '@angular/router';
+import { UtilityService } from '../../services/common/utility.service';
 
 
 
@@ -17,7 +20,6 @@ export class RestaurantComponent implements OnInit {
   // Properties
   /* ====================================================================== */
   public restaurantData: any;
-  public currentlySelectedRestaurantData: any;
 
 
   /* ====================================================================== */
@@ -25,7 +27,10 @@ export class RestaurantComponent implements OnInit {
   /* ====================================================================== */
   // Constructor /////////////////////////////////////
   constructor(private homeService: HomeService,
-              private sanitizer: DomSanitizer) {
+              private router: Router,
+              private sanitizer: DomSanitizer,
+              private utilityService: UtilityService,
+              private restaurantBridgeService: RestaurantBridgeService) {
   }
 
 
@@ -54,9 +59,11 @@ export class RestaurantComponent implements OnInit {
   /* ====================================================================== */
   // Click Methods /////////////////////////////////////
   selectRestaurantOnClick(restaurant: any): void {
-    alert('clicked!');
-    alert(JSON.stringify(restaurant));
-    this.currentlySelectedRestaurantData = restaurant;
+
+    this.restaurantBridgeService.currentlySelectedRestaurant = restaurant;
+    alert(this.restaurantBridgeService.currentlySelectedRestaurant);
+    this.router.navigate(['/restaurants/detail']);
+
   }
 
 
@@ -64,8 +71,10 @@ export class RestaurantComponent implements OnInit {
   //  Action Methods
   /* ====================================================================== */
   sanitizeImage(imageUrl: string): SafeStyle {
-    return this.sanitizer.bypassSecurityTrustStyle(`url(${imageUrl})`);
+    return this.utilityService.sanitizeImage(imageUrl);
   }
+
+
 
 
 
