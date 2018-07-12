@@ -1,5 +1,5 @@
 // Core
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
 
 // Services
@@ -20,6 +20,8 @@ export class RestaurantComponent implements OnInit {
   // Properties
   /* ====================================================================== */
   public restaurantData: any;
+
+  public currentlySelectedRestaurant: any;
 
 
   /* ====================================================================== */
@@ -59,8 +61,9 @@ export class RestaurantComponent implements OnInit {
   /* ====================================================================== */
   // Click Methods /////////////////////////////////////
   selectRestaurantOnClick(restaurant: any): void {
-    this.restaurantBridgeService.currentlySelectedRestaurant = restaurant;
-    this.router.navigate(['/restaurants/detail']);
+    this.currentlySelectedRestaurant = restaurant;
+    // this.restaurantBridgeService.currentlySelectedRestaurant = restaurant;
+    // this.router.navigate(['/restaurants/detail']);
 
   }
 

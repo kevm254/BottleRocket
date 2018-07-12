@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { GoogleMapsService } from '../../../services/common/google.service';
 import { RestaurantBridgeService } from '../../../services/cmp_services/restaurant_bridge.service';
 import { Router } from '@angular/router';
@@ -12,44 +12,82 @@ export class RestaurantDetailComponent implements OnInit, OnDestroy {
   /* ====================================================================== */
   //  Inputs & Outputs
   /* ====================================================================== */
-  private restaurantData: any = null;
+  private _restaurantData;
+  @Input()
+  set restaurantData(restaurantData) {
+    this._restaurantData = restaurantData;
+
+    this.initData();
+    this.openPanel();
+
+    this.showGoogleMaps(100, 100);
+  }
+
+  get restaurantData() {
+    return this._restaurantData;
+  }
+
+
+
+  @Output()
+  public clearParentDataEmitter: EventEmitter<void> = new EventEmitter<void>();
 
 
   /* ====================================================================== */
   //  Properties
   /* ====================================================================== */
+  private _isOpen: boolean = false;
+  get isOpen() { return this._isOpen };
+  set isOpen(isOpen: boolean) { this._isOpen = isOpen; };
+
+
+  // Restaurant's name taken from restaurantData
   private _restaurantName: string = '';
+  get restaurantName() { return this._restaurantName; };
+  set restaurantName(name: string) { this._restaurantName = name; };
+
+
+  // Restaurant's category taken from restaurantData
   private _restaurantCategory: string = '';
-  private _restaurantAddress1: string = '';
-  private _restaurantAddress2: string = '';
-  private _restaurantAddress3: string = '';
-  private _restaurantPhoneNo: string = '';
-  private _restaurantTwitter: string = '';
-  private _restaurantLatitude: number = 0;
-  private _restaurantLongitude: number = 0;
-
-  // Getters
-  get restaurantDataLoaded() { return this.restaurantData ? true : false };
-  get restaurantName() { return this._restaurantName; }
   get restaurantCategory() { return this._restaurantCategory; }
-  get restaurantAddress1() { return this._restaurantAddress1; }
-  get restaurantAddress2() { return this._restaurantAddress2; }
-  get restaurantAddress3() { return this._restaurantAddress3; }
-  get restaurantPhoneNo() { return this._restaurantPhoneNo; }
-  get restaurantTwitter() { return this._restaurantTwitter; }
-  get restaurantLatitude() { return this._restaurantLatitude; }
-  get restaurantLongitude() { return this._restaurantLongitude; }
+  set restaurantCategory(category: string) { this._restaurantCategory = category; }
 
-  // setters
-  set restaurantName(name: string) { this._restaurantName = name; }
+
+  // Restaurant's Address Line 1 taken from restaurantData
+  private _restaurantAddress1: string = '';
+  get restaurantAddress1() { return this._restaurantAddress1; }
   set restaurantAddress1(address: string) { this._restaurantAddress1 = address; }
+
+
+  private _restaurantAddress2: string = '';
+  get restaurantAddress2() { return this._restaurantAddress2; }
   set restaurantAddress2(address: string) { this._restaurantAddress2 =  address; }
+
+  private _restaurantAddress3: string = '';
+  get restaurantAddress3() { return this._restaurantAddress3; }
   set restaurantAddress3(address: string) { this._restaurantAddress3 = address; }
+
+
+  private _restaurantPhoneNo: string = '';
+  get restaurantPhoneNo() { return this._restaurantPhoneNo; }
   set restaurantPhoneNo(phoneNo: string) { this._restaurantPhoneNo = phoneNo; }
+
+
+  private _restaurantTwitter: string = '';
+  get restaurantTwitter() { return this._restaurantTwitter; }
   set restaurantTwitter(twitter: string) { this._restaurantTwitter = twitter ? ('@' + twitter) : ''; }
+
+
+  private _restaurantLatitude: number = 0;
+  get restaurantLatitude() { return this._restaurantLatitude; }
   set restaurantLatitude(lat: number) { this._restaurantLatitude = lat; }
+
+  private _restaurantLongitude: number = 0;
+  get restaurantLongitude() { return this._restaurantLongitude; }
   set restaurantLongitude(lng: number) { this._restaurantLongitude = lng; }
 
+  // Getters
+   get restaurantDataLoaded() { return this.restaurantData ? true : false };
 
 
   /* ====================================================================== */
@@ -74,24 +112,24 @@ export class RestaurantDetailComponent implements OnInit, OnDestroy {
     this.initData();
 
     // If No Data, Redirect Back Home
-    this.redirectToHomeIfNoData();
+    // this.redirectToHomeIfNoData();
 
     // Show Google Maps. Must occur after initData
-    this.showGoogleMaps(100, 100);
+
   }
 
 
   private showGoogleMaps(lat: number, lng: number): void {
-    this.restaurantLatitude = this.restaurantData.location ? this.restaurantData.location.lat : 0;
-    this.restaurantLongitude = this.restaurantData.location ? this.restaurantData.location.lng : 0;
-    if (this.restaurantLatitude && this.restaurantLongitude) {
-      this.googleMapsService.showMap(this.restaurantLatitude, this.restaurantLongitude);
+    if(this.restaurantData) {
+      this.restaurantLatitude = this.restaurantData.location ? this.restaurantData.location.lat : 0;
+      this.restaurantLongitude = this.restaurantData.location ? this.restaurantData.location.lng : 0;
+      if (this.restaurantLatitude && this.restaurantLongitude) {
+        this.googleMapsService.showMap(this.restaurantLatitude, this.restaurantLongitude);
+      }
     }
   }
 
   private initData() {
-    this.restaurantData = this.restaurantBridgeService.currentlySelectedRestaurant;
-
     if(this.restaurantData) {
       this.restaurantName = this.restaurantData.name || '';
       this.restaurantAddress1 = this.restaurantData.location ? this.restaurantData.location.formattedAddress[0] : '';
@@ -114,12 +152,32 @@ export class RestaurantDetailComponent implements OnInit, OnDestroy {
     this.clearData();
   }
 
-  clearData() {
-    this.restaurantBridgeService.currentlySelectedRestaurant = null;
-  }
+
 
   /* ====================================================================== */
   //  Action Methods
   /* ====================================================================== */
+  closePanel() {
+    this.isOpen = false;
+  }
+
+  openPanel() {
+    if (this.restaurantData) {
+      this.isOpen = true;
+    }
+  }
+
+  clearData() {
+
+  }
+
+  clearLocalData() {
+
+  }
+
+  clearParentData() {
+   this.clearParentDataEmitter.emit();
+  }
+
 
 }

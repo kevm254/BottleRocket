@@ -2,3 +2,13 @@
   color: white;
   font-size: 16px;
 }
+
+.panel-opened {
+  width: 100% !important;
+  transition: width .25s ease-in;
+}
+
+.panel-closed {
+  width: 0 !important;
+  transition: width .25s ease-in;
+}

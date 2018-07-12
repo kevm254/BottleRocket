@@ -3,12 +3,9 @@
 <!-- ************************************************************ -->
 <header-component></header-component>
 
-<!--<main [@fadeAnimation]="o.isActivated ? o.activatedRoute : ''">-->
-  <main [@routeSlide]="getState(outletRef)" class="route-container">
-  <router-outlet #outletRef="outlet"></router-outlet>
-</main>
+  <router-outlet></router-outlet>
 
-<div class="spacer"></div>
+  <div class="spacer"></div>
 
 <footer-cmp></footer-cmp>
 
