@@ -3,6 +3,8 @@ import { Routes } from '@angular/router';
 
 //  Components
 import { HomeComponent } from './components/home/home.component';
+import { RestaurantComponent } from './components/restaurant/restaurant.component';
+import { RestaurantDetailComponent } from './components/restaurant/detail/restaurant-detail.component';
 
 
 export const AppRoutes: Routes = [
@@ -10,6 +12,14 @@ export const AppRoutes: Routes = [
   {
     path: 'home',
     component: HomeComponent
+  },
+  {
+    path: 'restaurants',
+    component: RestaurantComponent
+  },
+  {
+    path: 'display-detail',
+    component: RestaurantDetailComponent
   },
 
   // Default Route

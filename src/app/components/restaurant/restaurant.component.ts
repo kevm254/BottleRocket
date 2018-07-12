@@ -1,5 +1,11 @@
+// Core
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
+
+// Services
 import { HomeService } from '../../services/cmp_services/home.service';
+
+
 
 @Component({
   selector: 'restaurant-cmp',
@@ -14,12 +20,12 @@ export class RestaurantComponent implements OnInit {
   public currentlySelectedRestaurantData: any;
 
 
-
   /* ====================================================================== */
   // Constructor & Life-Cycle Methods
   /* ====================================================================== */
   // Constructor /////////////////////////////////////
-  constructor(private homeService: HomeService,) {
+  constructor(private homeService: HomeService,
+              private sanitizer: DomSanitizer) {
   }
 
 
@@ -52,4 +58,15 @@ export class RestaurantComponent implements OnInit {
     alert(JSON.stringify(restaurant));
     this.currentlySelectedRestaurantData = restaurant;
   }
+
+
+  /* ====================================================================== */
+  //  Action Methods
+  /* ====================================================================== */
+  sanitizeImage(imageUrl: string): SafeStyle {
+    return this.sanitizer.bypassSecurityTrustStyle(`url(${imageUrl})`);
+  }
+
+
+
 }
