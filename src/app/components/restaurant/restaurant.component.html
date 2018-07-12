@@ -1,8 +1,8 @@
 <!-- ------------------------------------------------------------ -->
 <!-- START Loading
 <!-- ------------------------------------------------------------ -->
-<div *ngIf="!restaurantData; else displayData">
-  Data Loading...
+<div *ngIf="!restaurantData;">
+
 </div>
 <!-- ------------------------------------------------------------ -->
 <!-- END Loading
@@ -12,7 +12,7 @@
 <!-- ------------------------------------------------------------ -->
 <!-- START Restaurant List
 <!-- ------------------------------------------------------------ -->
-<div *ngIf="restaurantData" #displayData>
+<div *ngIf="restaurantData">
   <div style="display: flex; flex-wrap: wrap;" class="main_container">
 
 

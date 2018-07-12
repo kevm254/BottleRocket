@@ -9,6 +9,9 @@
   }
 }
 
-.hover:hover {
-  font-size: 40px !important;
+.main_container > *:hover  {
+  filter: drop-shadow(5px 5px 4px black);
+  border-radius: 10px;
+  transition: transform .25s ease-out;
+  transform: scale(1.05);
 }
