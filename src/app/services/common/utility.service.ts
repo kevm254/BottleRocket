@@ -8,12 +8,13 @@ export class UtilityService {
     private router: Router,
     private sanitizer: DomSanitizer) {}
 
+  // sanitizeImage(imageUrl: string): SafeStyle {
+  //   return this.sanitizer.bypassSecurityTrustStyle(`url(${imageUrl})`);
+  // }
+
   sanitizeImage(imageUrl: string): SafeStyle {
-    return this.sanitizer.bypassSecurityTrustStyle(`url(${imageUrl})`);
+    return this.sanitizer.bypassSecurityTrustStyle(imageUrl);
   }
 
-  navigateTo(route: string) {
-    this.router.navigate([route]);
-  }
 
 }

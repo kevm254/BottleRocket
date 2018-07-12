@@ -13,19 +13,17 @@
 <!-- START Restaurant List
 <!-- ------------------------------------------------------------ -->
 <div *ngIf="restaurantData" #displayData>
-
-
   <div style="display: flex; flex-wrap: wrap;" class="main_container">
+
 
     <div
       *ngFor="let restaurant of restaurantData"
-      [style.background-image]="sanitizeImage(restaurant.backgroundImageURL)"
+      [style.background-image]="sanitizeImage('linear-gradient(0deg, rgba(0, 0, 0, 1), rgba(255, 255, 255, 0) 25%), url(' + restaurant.backgroundImageURL + ')')"
       (click)="selectRestaurantOnClick(restaurant);"
       style="display: flex; background-size: cover; background-repeat: no-repeat;"
       class="hover">
-        <div
-        class="hover"
-        style="align-self: flex-end; border: 1px solid green; margin-left: 10px; margin-bottom: 10px; ">
+      <div
+        style="align-self: flex-end; margin-left: 10px; margin-bottom: 10px; ">
         <h2 style="font-size: 25px; color: white;">{{ restaurant.name }}</h2>
         <h3 style="font-size: 17px; color: white;">{{ restaurant.category }}</h3>
       </div>

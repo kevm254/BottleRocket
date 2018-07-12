@@ -59,9 +59,7 @@ export class RestaurantComponent implements OnInit {
   /* ====================================================================== */
   // Click Methods /////////////////////////////////////
   selectRestaurantOnClick(restaurant: any): void {
-
     this.restaurantBridgeService.currentlySelectedRestaurant = restaurant;
-    alert(this.restaurantBridgeService.currentlySelectedRestaurant);
     this.router.navigate(['/restaurants/detail']);
 
   }

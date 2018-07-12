@@ -30,13 +30,30 @@
   color: red;
 }
 
+.nav-item > a {
+  color: white;
+}
+
+.nav-item > a:hover {
+  text-underline: none;}
+
+
 @media only screen and (max-width: 700px) {
   .nav-item-lg-width {
     display: none;
   }
+
+  .contact-alignment {
+    margin-left: -40px;
+  }
 }
 
 @media only screen and (min-width: 701px) {
+  #main_nav {
+    transition: background-color .5s ease-in;
+    background-color: red;
+  }
+
   .menu-bar {
     width: 0;
     transition: width .25s ease-out;
@@ -44,5 +61,9 @@
 
   .menu-bar * {
     display: none;
+  }
+
+  .nav-item {
+    color: white;
   }
 }

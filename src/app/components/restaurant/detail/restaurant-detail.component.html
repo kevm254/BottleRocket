@@ -12,8 +12,8 @@
       style="background-color: green">
 
       <div class="col-lg-12">
-        <h2 *ngIf="restaurantName">{{ restaurantName }}</h2>
-        <h3 *ngIf="restaurantCategory">{{ restaurantCategory }}</h3>
+        <h2>{{ restaurantName }}</h2>
+        <h3>{{ restaurantCategory }}</h3>
       </div>
     </div>
 
@@ -22,13 +22,10 @@
 
       <div class="col-lg-12">
         <div>{{ restaurantTwitter }}</div>
-        <div *ngIf="restaurantAddress1">{{ restaurantAddress1 }}</div>
-        <div *ngIf="restaurantAddress2">{{ restaurantAddress2 }}</div>
-        <div *ngIf="restaurantAddress3">{{ restaurantAddress3 }}</div>
-        <div *ngIf="restaurantPhoneNo">{{ restaurantPhoneNo }}</div>
-
-
-
+        <div>{{ restaurantAddress1 }}</div>
+        <div>{{ restaurantAddress2 }}</div>
+        <div>{{ restaurantAddress3 }}</div>
+        <div>{{ restaurantPhoneNo }}</div>
       </div>
 
     </div>
