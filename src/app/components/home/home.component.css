@@ -19,7 +19,6 @@
   background-size: contain;
   background-position-x: center;
    background-repeat: no-repeat;
-  background-attachment: fixed;
 }
 
 .hero {
@@ -27,7 +26,6 @@
   width: 100%;
   text-align: center;
   transition: font-size .25s ease-in;
-
 }
 
 
@@ -42,5 +40,7 @@
 
   .hero-container {
     min-height: 400px;
+    background-size: cover;
   }
 }
+

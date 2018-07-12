@@ -28,6 +28,15 @@
   text-align: center;
 }
 
+.active {
+  color: yellow;
+}
+
+a.nav-icon:hover {
+  text-decoration: none;
+  color: orange;
+}
+
 @media only screen and (min-width: 701px) {
   #main_footer {
     height: 0;

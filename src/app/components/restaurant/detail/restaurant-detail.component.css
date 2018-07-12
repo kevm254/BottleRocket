@@ -8,10 +8,11 @@
   max-width: 700px;
 }
 
-.header {
+.detail-header {
+  background-color: green;
+  max-width: 715px;
   color: white;
   font-size: 16px;
-  background-color: green;
   padding-left: 20px;
   padding-top: 15px;
   padding-bottom: 15px;
@@ -28,6 +29,7 @@
 }
 
 .ext_close_btn {
+  cursor: pointer;
   margin-top: 19px;
   height: 100px;
   width: 100px;
@@ -58,3 +60,8 @@
   width: 100%;
 
 }
+
+.detail-header h4 {
+  font-weight: 200;
+}
+

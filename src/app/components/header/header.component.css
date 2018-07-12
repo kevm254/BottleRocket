@@ -95,7 +95,7 @@
 /* -------------------------------------------- */
 @media only screen and (max-width: 700px) {
   .nav-item {
-    font-size: 1.8rem;
+    font-size: 1.7rem;
   }
 
   .nav-item-lg-width {
@@ -103,7 +103,8 @@
   }
 
   .contact-alignment {
-    margin-left: -40px;
+    margin-left: -90px;
+    font-size: 1.4rem;
   }
 }
 
