@@ -1,11 +1,12 @@
-
-
 <!-- ************************************************************ -->
 <!-- Start App -->
 <!-- ************************************************************ -->
 <header-component></header-component>
 
-<router-outlet ></router-outlet>
+<!--<main [@fadeAnimation]="o.isActivated ? o.activatedRoute : ''">-->
+  <main [@routeSlide]="getState(outletRef)" class="route-container">
+  <router-outlet #outletRef="outlet"></router-outlet>
+</main>
 
 <div class="spacer"></div>
 

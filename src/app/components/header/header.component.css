@@ -35,7 +35,12 @@
 }
 
 .nav-item > a:hover {
-  text-underline: none;}
+
+}
+
+.active {
+  font-size: 80px;
+}
 
 
 @media only screen and (max-width: 700px) {
