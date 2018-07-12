@@ -65,6 +65,11 @@
   font-weight: 500;
 }
 
+.active:hover {
+  transition: scale .25s ease-in;
+  transform: scale(1.4);
+}
+
 
 .brand {
   margin-top: -14px;

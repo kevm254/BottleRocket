@@ -27,11 +27,11 @@ export class RestaurantDetailComponent implements OnInit, OnDestroy {
     return this._restaurantData;
   }
 
-
-
   @Output()
   public clearParentDataEmitter: EventEmitter<void> = new EventEmitter<void>();
 
+  @Output()
+  public detailDisplayOpenStatusEmitter: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   /* ====================================================================== */
   //  Properties
@@ -132,6 +132,7 @@ export class RestaurantDetailComponent implements OnInit, OnDestroy {
   private initData() {
     if(this.restaurantData) {
       this.restaurantName = this.restaurantData.name || '';
+      this.restaurantCategory = this.restaurantData.category || '';
       this.restaurantAddress1 = this.restaurantData.location ? this.restaurantData.location.formattedAddress[0] : '';
       this.restaurantAddress2 = this.restaurantData.location ? this.restaurantData.location.formattedAddress[1] : '';
       this.restaurantAddress3 = this.restaurantData.location ? this.restaurantData.location.formattedAddress[2] : '';
@@ -158,14 +159,14 @@ export class RestaurantDetailComponent implements OnInit, OnDestroy {
   //  Action Methods
   /* ====================================================================== */
   closePanel() {
-    this.isOpen = false;
+    this.detailDisplayIsClosed();
 
     this.clearParentData();
   }
 
   openPanel() {
     if (this.restaurantData) {
-      this.isOpen = true;
+      this.detailDisplayIsOpen();
     }
   }
 
@@ -179,6 +180,16 @@ export class RestaurantDetailComponent implements OnInit, OnDestroy {
 
   clearParentData() {
    this.clearParentDataEmitter.emit();
+  }
+
+  detailDisplayIsOpen() {
+    this.isOpen = true;
+    this.detailDisplayOpenStatusEmitter.emit(true);
+  }
+
+  detailDisplayIsClosed() {
+    this.isOpen = false;
+    this.detailDisplayOpenStatusEmitter.emit(false);
   }
 
 

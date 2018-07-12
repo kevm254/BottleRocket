@@ -1,19 +1,22 @@
 .content-body {
+  padding-top: 10px;
+  max-width: 90%;
+  margin: auto;
   margin-top: 40px;
-
+  border-bottom: 4px red solid;
 }
 
 .hero-container {
   width: 100%;
   text-align: center;
-
+  font-size: 1.8rem;
   background-color: red;
   min-height: 300px;
   display: flex;
   align-items: center;
   justify-items: center;
-  /*background: linear-gradient(rgba(255, 0, 0, .5), rgba(255, 0, 0, .5)), url('assets/images/office_people.jpeg');*/
-  background-size: cover;
+  background: linear-gradient(rgba(50, 0, 0, .7), rgba(50, 0, 0, .7)), url('assets/images/office_people.jpeg');
+  background-size: contain;
   background-position-x: center;
    background-repeat: no-repeat;
   background-attachment: fixed;
@@ -21,7 +24,6 @@
 
 .hero {
   color: white;
-  font-size: 1.2rem;
   width: 100%;
   text-align: center;
   transition: font-size .25s ease-in;

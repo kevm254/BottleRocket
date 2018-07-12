@@ -20,8 +20,8 @@ export class RestaurantComponent implements OnInit {
   // Properties
   /* ====================================================================== */
   public restaurantData: any;
-
   public currentlySelectedRestaurant: any;
+  public overlayIsVisible: boolean = false;
 
 
   /* ====================================================================== */
@@ -62,9 +62,6 @@ export class RestaurantComponent implements OnInit {
   // Click Methods /////////////////////////////////////
   selectRestaurantOnClick(restaurant: any): void {
     this.currentlySelectedRestaurant = restaurant;
-    // this.restaurantBridgeService.currentlySelectedRestaurant = restaurant;
-    // this.router.navigate(['/restaurants/detail']);
-
   }
 
 
@@ -79,7 +76,9 @@ export class RestaurantComponent implements OnInit {
     this.currentlySelectedRestaurant = null;
   }
 
-
+  changeOverlayStatus(openStatus: boolean) {
+    this.overlayIsVisible = openStatus;
+  }
 
 
 }

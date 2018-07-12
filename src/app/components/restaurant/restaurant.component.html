@@ -15,7 +15,6 @@
 <div *ngIf="restaurantData">
   <div style="display: flex; flex-wrap: wrap;" class="main_container">
 
-
     <div
       *ngFor="let restaurant of restaurantData"
       [style.background-image]="sanitizeImage('linear-gradient(0deg, rgba(0, 0, 0, 1), rgba(255, 255, 255, 0) 25%), url(' + restaurant.backgroundImageURL + ')')"
@@ -36,8 +35,25 @@
 <!-- END Restaurant List
 <!-- ------------------------------------------------------------ -->
 
+
+<!-- ------------------------------------------------------------ -->
+<!-- BEGIN Restaurant Detail
+<!-- ------------------------------------------------------------ -->
 <restaurant-detail-cmp
   [restaurantData]="currentlySelectedRestaurant"
+  (detailDisplayOpenStatusEmitter)="changeOverlayStatus($event)"
   (clearParentDataEmitter)="clearSelectedRestaurant()">
 </restaurant-detail-cmp>
+<!-- ------------------------------------------------------------ -->
+<!-- END Restaurant Detail
+<!-- ------------------------------------------------------------ -->
 
+
+<!-- ------------------------------------------------------------ -->
+<!-- BEGIN Overlay
+<!-- ------------------------------------------------------------ -->
+<div *ngIf="overlayIsVisible"
+  class="overlay"></div>
+<!-- ------------------------------------------------------------ -->
+<!-- END Overlay
+<!-- ------------------------------------------------------------ -->
