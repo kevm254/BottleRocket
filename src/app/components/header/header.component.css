@@ -1,7 +1,7 @@
 #main_nav {
   display: flex;
   height: 100px;
-  background-color: blue;
+  background-color: white;
 }
 
 
@@ -10,15 +10,39 @@
   display: flex;
   height: 100px;
   width: 100px;
-  background-color: black;
+  background-color: red;
   text-align: center;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  transition: width .25s ease-in;
 }
+
 .menu-bar-block {
   height: 4px;
   border-top: 5px solid white;
   width:  60%;
   margin-bottom: 10px;
+}
+
+.nav-item {
+  color: red;
+}
+
+@media only screen and (max-width: 700px) {
+  .nav-item-lg-width {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 701px) {
+  .menu-bar {
+    width: 0;
+    transition: width .25s ease-out;
+  }
+
+  .menu-bar * {
+    display: none;
+  }
 }

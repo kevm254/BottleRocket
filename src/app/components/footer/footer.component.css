@@ -26,11 +26,13 @@
 
 @media only screen and (min-width: 701px) {
   #main_footer {
-    /*display: none !important;*/
-
     height: 0;
-
     /* Animation */
     transition: height .25s ease-out;
   }
+
+  #main_footer > * {
+    display: none;
+  }
+
 }

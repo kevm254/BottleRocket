@@ -25,6 +25,8 @@ export class RestaurantDetailComponent implements OnInit, OnDestroy {
   private _restaurantAddress3: string = '';
   private _restaurantPhoneNo: string = '';
   private _restaurantTwitter: string = '';
+  private _restaurantLatitude: number = 0;
+  private _restaurantLongitude: number = 0;
 
   // Getters
   get restaurantDataLoaded() { return this.restaurantData ? true : false };
@@ -35,6 +37,8 @@ export class RestaurantDetailComponent implements OnInit, OnDestroy {
   get restaurantAddress3() { return this._restaurantAddress3; }
   get restaurantPhoneNo() { return this._restaurantPhoneNo; }
   get restaurantTwitter() { return this._restaurantTwitter; }
+  get restaurantLatitude() { return this._restaurantLatitude; }
+  get restaurantLongitude() { return this._restaurantLongitude; }
 
   // setters
   set restaurantName(name: string) { this._restaurantName = name; }
@@ -43,6 +47,8 @@ export class RestaurantDetailComponent implements OnInit, OnDestroy {
   set restaurantAddress3(address: string) { this._restaurantAddress3 = address; }
   set restaurantPhoneNo(phoneNo: string) { this._restaurantPhoneNo = phoneNo; }
   set restaurantTwitter(twitter: string) { this._restaurantTwitter = twitter ? ('@' + twitter) : ''; }
+  set restaurantLatitude(lat: number) { this._restaurantLatitude = lat; }
+  set restaurantLongitude(lng: number) { this._restaurantLongitude = lng; }
 
 
 
@@ -70,13 +76,17 @@ export class RestaurantDetailComponent implements OnInit, OnDestroy {
     // If No Data, Redirect Back Home
     this.redirectToHomeIfNoData();
 
-    // Show Google Maps
+    // Show Google Maps. Must occur after initData
     this.showGoogleMaps(100, 100);
   }
 
 
   private showGoogleMaps(lat: number, lng: number): void {
-    this.googleMapsService.showMap(lat, lng);
+    this.restaurantLatitude = this.restaurantData.location ? this.restaurantData.location.lat : 0;
+    this.restaurantLongitude = this.restaurantData.location ? this.restaurantData.location.lng : 0;
+    if (this.restaurantLatitude && this.restaurantLongitude) {
+      this.googleMapsService.showMap(this.restaurantLatitude, this.restaurantLongitude);
+    }
   }
 
   private initData() {
@@ -89,6 +99,7 @@ export class RestaurantDetailComponent implements OnInit, OnDestroy {
       this.restaurantAddress3 = this.restaurantData.location ? this.restaurantData.location.formattedAddress[2] : '';
       this.restaurantPhoneNo = this.restaurantData.contact ? this.restaurantData.contact.formattedPhone : '';
       this.restaurantTwitter = this.restaurantData.contact ? this.restaurantData.contact.twitter : '';
+
     }
   }
 
