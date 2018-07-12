@@ -1,32 +1,21 @@
 <!-- ************************************************************ -->
-<!-- Start Header -->
+<!-- START Header -->
 <!-- ************************************************************ -->
 <section id="home_section">
 
-  <p>We are on the home component!</p>
-  <button class="btn btn-primary" (click)="fetchRestaurantData()">Get Data!</button>
 
-
-  <div *ngIf="!restaurantData; else displayData">
-    Data Loading...
+  <!-- ------------------------------------------------------------ -->
+  <!-- START Loading
+  <!-- ------------------------------------------------------------ -->
+  <div class="hero" style="background-color: red; min-height: 400px; display: flex; align-items: center; justify-items: center;">
+    <p style="width: 100%; text-align: center; color: white; font-size: 1.2rem;">we look forward to hearing from you</p>
   </div>
+  <!-- ------------------------------------------------------------ -->
+  <!-- START Loading
+  <!-- ------------------------------------------------------------ -->
 
-  <div *ngIf="restaurantData" #displayData>
 
-    <div class="row">
-      <div *ngFor="let restaurant of restaurantData">
-        <div class="col-md-6">
-          <!--<pre>{{ restaurant | json }}</pre>-->
-          <button (click)="selectRestaurantOnClick(restaurant)">Select This</button>
-          <h2>{{ restaurant.name }}</h2>
-          <h3>{{ restaurant.category }}</h3>
-        </div>
-      </div>
-    </div>
 
-  </div>
-
-  <home-detail-cmp [restaurantData]="currentlySelectedRestaurantData"></home-detail-cmp>
 
 
 </section>

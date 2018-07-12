@@ -1,0 +1,8 @@
+#main_footer {
+  background-color: black;
+  display: flex;
+  height: 100px;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+}

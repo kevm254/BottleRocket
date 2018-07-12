@@ -1,0 +1,40 @@
+<!-- ------------------------------------------------------------ -->
+<!-- START Loading
+<!-- ------------------------------------------------------------ -->
+<div *ngIf="!restaurantData; else displayData">
+  Data Loading...
+</div>
+<!-- ------------------------------------------------------------ -->
+<!-- END Loading
+<!-- ------------------------------------------------------------ -->
+
+
+<!-- ------------------------------------------------------------ -->
+<!-- START Restaurant List
+<!-- ------------------------------------------------------------ -->
+<div *ngIf="restaurantData" #displayData>
+
+
+  <div style="display: flex; flex-wrap: wrap;" class="test">
+    <div *ngFor="let restaurant of restaurantData" style="display: flex;">
+      <div style="align-self: flex-end; border: 1px solid green; margin-left: 10px; margin-bottom: 10px;">
+        <h2>{{ restaurant.name }}</h2>
+        <h3>{{ restaurant.category }}</h3>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ------------------------------------------------------------ -->
+<!-- END Restaurant List
+<!-- ------------------------------------------------------------ -->
+
+
+<!-- ------------------------------------------------------------ -->
+<!-- START Restaurant Detail
+<!-- ------------------------------------------------------------ -->
+<restaurant-detail-cmp [restaurantData]="currentlySelectedRestaurantData"></restaurant-detail-cmp>
+<!-- ------------------------------------------------------------ -->
+<!-- END Restaurant Detail
+<!-- ------------------------------------------------------------ -->

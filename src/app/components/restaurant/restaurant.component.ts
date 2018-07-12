@@ -2,15 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { HomeService } from '../../services/cmp_services/home.service';
 
 @Component({
-  selector: 'home-component',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'restaurant-cmp',
+  templateUrl: './restaurant.component.html',
+  styleUrls: ['./restaurant.component.css']
 })
-export class HomeComponent implements OnInit {
+export class RestaurantComponent implements OnInit {
   /* ====================================================================== */
   // Properties
   /* ====================================================================== */
-
+  public restaurantData: any;
+  public currentlySelectedRestaurantData: any;
 
 
 
@@ -24,10 +25,20 @@ export class HomeComponent implements OnInit {
 
   // General Life-Cycle Methods /////////////////////////////////////
   /* NOTE:
-  -- Do not place implementation details inside the life-cycle methods.
-  -- Create a function and then call the function in the life-cycle method.
+   -- Do not place implementation details inside the life-cycle methods.
+   -- Create a function and then call the function in the life-cycle method.
    */
   ngOnInit(): void {
+    this.fetchRestaurantDataOnInit();
+  }
+
+
+  // ngOnInit Methods /////////////////////////////////////
+  fetchRestaurantDataOnInit(): void {
+    this.homeService.fetchRestaurantData()
+      .subscribe((data: any) => {
+        this.restaurantData = data.restaurants ? data.restaurants : data;
+      });
   }
 
 
@@ -36,5 +47,9 @@ export class HomeComponent implements OnInit {
   //  Action Methods
   /* ====================================================================== */
   // Click Methods /////////////////////////////////////
-
+  selectRestaurantOnClick(restaurant: any): void {
+    alert('clicked!');
+    alert(JSON.stringify(restaurant));
+    this.currentlySelectedRestaurantData = restaurant;
+  }
 }
